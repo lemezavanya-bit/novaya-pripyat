@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>ОАО "Новая Припять" — главная</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ПРЕЛОАДЕР — РАБОЧАЯ ВЕРСИЯ -->
+<div class="preloader" id="preloader">
+    <div class="preloader-container">
+        <div class="preloader-logo">
+            <img src="images/logo.png" alt="ОАО Новая Припять">
+        </div>
+        <h2 class="preloader-title">ОАО «Новая Припять»</h2>
+        <p class="preloader-subtitle">Современное сельское хозяйство</p>
+        <div class="preloader-progress">
+            <div class="preloader-progress-bar"></div>
+        </div>
+        <p class="preloader-text">Добро пожаловать</p>
+    </div>
+</div>
+
+
+<script>
+// Скрываем прелоадер после загрузки страницы
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        var preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    }, 2000);
+});
+</script>
+
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <img src="images/logo.png" alt="Логотип">
+                <div class="logo-text">
+                    <h2>Новая Припять</h2>
+                    <p>ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="products.html">Продукция</a></li>
+                <li><a href="career.html">Карьера</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="map.html">Карта</a></li>
+                <li><a href="faq.html">FAQ</a><li>
+            </ul>
+            <a href="career.html" class="btn-primary">Хочу работать здесь</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ГЕРОЙ -->
+    <section class="hero" style="background:  url('images/hero-bg.jpg'); background-size: cover; background-position: center 50%;">
+    <div class="hero-bg-animation"></div>
+    <div class="container">
+        <div class="hero-content fade-up">
+            <h1>76 лет надёжности и развития</h1>
+            <p>ОАО «Новая Припять» — одно из ведущих сельскохозяйственных предприятий Столинского района</p>
+            <a href="career.html" class="btn-outline" style="border-color:white; color:white;">Присоединяйтесь к команде</a>
+        </div>
+    </div>
+</section>
+
+
+
+<<!-- СЧЁТЧИКИ ПРОИЗВОДСТВА -->
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 0;">
+    <div class="counter-card" style="background: #2b5b2c; color: white; border-radius: 20px; padding: 20px; text-align: center; min-width: 180px;">
+        <div style="font-size: 14px; opacity: 0.8;">🥛 Надоено за год</div>
+        <div class="counter" id="milkCounter" data-target="38500" style="font-size: 36px; font-weight: bold;">0</div>
+        <div>тонн молока</div>
+    </div>
+    
+    <div class="counter-card" style="background: #c4a35a; color: white; border-radius: 20px; padding: 20px; text-align: center; min-width: 180px;">
+        <div style="font-size: 14px; opacity: 0.8;">🌾 Собрано зерна</div>
+        <div class="counter" id="grainCounter" data-target="12400" style="font-size: 36px; font-weight: bold;">0</div>
+        <div>тонн зерна</div>
+    </div>
+    
+    <div class="counter-card" style="background: #3a7a3a; color: white; border-radius: 20px; padding: 20px; text-align: center; min-width: 180px;">
+        <div style="font-size: 14px; opacity: 0.8;">🐄 Поголовье КРС</div>
+        <div class="counter" id="cattleCounter" data-target="11650" style="font-size: 36px; font-weight: bold;">0</div>
+        <div>голов</div>
+    </div>
+    
+    <div class="counter-card" style="background: #5a4a2a; color: white; border-radius: 20px; padding: 20px; text-align: center; min-width: 180px;">
+        <div style="font-size: 14px; opacity: 0.8;">🚜 Тракторный парк</div>
+        <div class="counter" id="tractorCounter" data-target="115" style="font-size: 36px; font-weight: bold;">0</div>
+        <div>тракторов</div>
+    </div>
+    
+    <div class="counter-card" style="background: #2d6a4f; color: white; border-radius: 20px; padding: 20px; text-align: center; min-width: 180px;">
+        <div style="font-size: 14px; opacity: 0.8;">🌾 Общая площадь</div>
+        <div class="counter" id="areaCounter" data-target="13600" style="font-size: 36px; font-weight: bold;">0</div>
+        <div>га земли</div>
+    </div>
+</div>
+
+<script>
+// Анимация счётчиков при скролле
+function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const duration = 2000; // 2 секунды
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            el.innerText = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            el.innerText = Math.floor(current).toLocaleString();
+        }
+    }, 16);
+}
+
+// Наблюдатель за появлением элементов
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target); // анимируем только один раз
+        }
+    });
+}, { threshold: 0.5 });
+
+// Запускаем наблюдение за всеми счётчиками
+document.querySelectorAll('.counter').forEach(counter => observer.observe(counter));
+</script>
+
+
+
+
+
+    <!-- О ПРЕДПРИЯТИИ КРАТКО -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title fade-up">О предприятии</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="fade-up">
+                <p style="font-size: 1.1rem;">ОАО «Новая Припять» организовано в <strong>1949 году</strong>. Сельхозпредприятие объединяет <strong>9 населённых пунктов</strong>, административный центр — агрогородок Ольшаны.</p>
+                <a href="about.html" class="btn-outline" style="margin-top: 24px;">Подробнее об истории →</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+    <!-- ГАЛЕРЕЯ РАБОЧИЕ БУДНИ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-up">Рабочие будни</h2>
+            <p class="section-subtitle fade-up">Жизнь предприятия в кадрах</p>
+<!-- КНОПКА В ГАЛЕРЕЮ -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <a href="gallery.html" class="btn-primary" style="background: #2b5b2c; padding: 12px 32px;">
+                <i class="fas fa-images" style="margin-right: 8px;"></i> Смотреть всю галерею
+            </a>
+        </div>
+
+
+
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/work1.jpg" alt="Работа в поле"></div>
+                <div class="gallery-item"><img src="images/work2.jpg" alt="Техника"></div>
+                <div class="gallery-item"><img src="images/work3.jpg" alt="Животноводство"></div>
+                
+            </div>
+        </div>
+    </section>
+
+<!-- БЛОК FAQ -->
+<section class="section section-light">
+    <div class="container">
+        <h2 class="section-title fade-up">Часто задаваемые вопросы</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            
+            <div class="faq-item" style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; cursor: pointer; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: #2b5b2c; margin: 0;">📄 Какие документы нужны для трудоустройства?</h3>
+                    <i class="fas fa-chevron-down" style="color: #2b5b2c;"></i>
+                </div>
+                <div class="faq-answer" style="display: none; margin-top: 12px; color: #4b5563; line-height: 1.5;">
+                    <strong>Ответ:</strong> Паспорт, трудовая книжка (при наличии), диплом об образовании, медицинская справка, страховое свидетельство, военный билет (для военнообязанных).
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; cursor: pointer; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: #2b5b2c; margin: 0;">🏠 Есть ли жильё для иногородних?</h3>
+                    <i class="fas fa-chevron-down" style="color: #2b5b2c;"></i>
+                </div>
+                <div class="faq-answer" style="display: none; margin-top: 12px; color: #4b5563; line-height: 1.5;">
+                    <strong>Ответ:</strong> Да, предоставляется комфортабельное общежитие. После 5 лет работы — арендный частный дом. Плата ~20 BYN/мес.
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; cursor: pointer; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: #2b5b2c; margin: 0;">🎓 Как оформить целевое направление?</h3>
+                    <i class="fas fa-chevron-down" style="color: #2b5b2c;"></i>
+                </div>
+                <div class="faq-answer" style="display: none; margin-top: 12px; color: #4b5563; line-height: 1.5;">
+                    <strong>Ответ:</strong> Обратитесь в отдел кадров по телефону +375 29 511 95 04 или приезжайте в аг. Ольшаны, ул. Школьная, 4.
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; cursor: pointer; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: #2b5b2c; margin: 0;">💰 Какие выплаты для молодых специалистов?</h3>
+                    <i class="fas fa-chevron-down" style="color: #2b5b2c;"></i>
+                </div>
+                <div class="faq-answer" style="display: none; margin-top: 12px; color: #4b5563; line-height: 1.5;">
+                    <strong>Ответ:</strong> Подъёмные: 200 БВ при первом контракте, 300 БВ при втором. Доплаты студентам-целевикам: 5-10 БВ ежемесячно.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Кнопка "Все вопросы" под FAQ -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="faq.html" style="display: inline-flex; align-items: center; gap: 10px; background: #2b5b2c; color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(0,0,0,0.1);" 
+        onmouseover="this.style.background='#1a4d1a'; this.style.transform='scale(1.02)'" 
+        onmouseout="this.style.background='#2b5b2c'; this.style.transform='scale(1)'">
+            📖 Все вопросы и ответы
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<script>
+// Раскрытие FAQ (рабочая версия)
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        // Находим блок с вопросом (первый div внутри item)
+        const questionBlock = item.querySelector('div:first-child');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('i');
+        
+        if (questionBlock) {
+            questionBlock.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Проверяем, открыт ли ответ
+                const isOpen = answer.style.display === 'block';
+                
+                // Закрываем все другие ответы
+                faqItems.forEach(otherItem => {
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherIcon = otherItem.querySelector('i');
+                    if (otherAnswer && otherAnswer !== answer) {
+                        otherAnswer.style.display = 'none';
+                        if (otherIcon) {
+                            otherIcon.classList.remove('fa-chevron-up');
+                            otherIcon.classList.add('fa-chevron-down');
+                        }
+                    }
+                });
+                
+                // Открываем или закрываем текущий
+                if (isOpen) {
+                    answer.style.display = 'none';
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                } else {
+                    answer.style.display = 'block';
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+
+
+
+
+
+<<!-- ВИДЖЕТ ПОГОДЫ - РАБОТАЕТ -->
+<div class="fade-up" style="background: white; border-radius: 24px; padding: 24px; text-align: center; max-width: 400px; margin: 0 auto 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #2b5b2c; margin-bottom: 16px;">🌤 Погода в Ольшанах</h3>
+    <div id="weatherWidget">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <div class="weather-spinner"></div>
+            <span>Загрузка погоды...</span>
+        </div>
+    </div>
+    <p style="font-size: 0.8rem; color: #6b7280; margin-top: 12px;">Актуально для аграрных работ</p>
+</div>
+
+<style>
+.weather-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2b5b2c;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: weatherSpin 0.8s linear infinite;
+}
+@keyframes weatherSpin {
+    to { transform: rotate(360deg); }
+}
+.weather-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+.weather-temp {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2b5b2c;
+}
+.weather-desc {
+    color: #555;
+    margin: 5px 0;
+}
+.weather-details {
+    font-size: 13px;
+    color: #777;
+    margin-top: 8px;
+}
+</style>
+
+<script>
+async function loadWeather() {
+    const apiKey = '57ed8cad66567fb8607478295cd2793e';
+    // Ольшаны, Брестская область, Беларусь
+    const lat = 51.9833;
+    const lon = 26.8333;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=ru&appid=${apiKey}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Иконка погоды (эмодзи вместо картинок)
+            const weatherEmoji = {
+                '01d': '☀️', '01n': '🌙',
+                '02d': '⛅', '02n': '☁️',
+                '03d': '☁️', '03n': '☁️',
+                '04d': '☁️', '04n': '☁️',
+                '09d': '🌧️', '09n': '🌧️',
+                '10d': '🌦️', '10n': '🌧️',
+                '11d': '⛈️', '11n': '⛈️',
+                '13d': '❄️', '13n': '❄️',
+                '50d': '🌫️', '50n': '🌫️'
+            };
+            const iconCode = data.weather[0].icon;
+            const emoji = weatherEmoji[iconCode] || '🌡️';
+            
+            document.getElementById('weatherWidget').innerHTML = `
+                <div class="weather-icon">${emoji}</div>
+                <div class="weather-temp">${Math.round(data.main.temp)}°C</div>
+                <div class="weather-desc">${data.weather[0].description}</div>
+                <div class="weather-details">
+                    💧 Влажность: ${data.main.humidity}% | 💨 Ветер: ${Math.round(data.wind.speed)} м/с
+                </div>
+                <div style="font-size: 12px; color: #999; margin-top: 10px;">
+                    🌡️ Ощущается как ${Math.round(data.main.feels_like)}°C
+                </div>
+            `;
+        } else {
+            document.getElementById('weatherWidget').innerHTML = '<p>⚠️ Не удалось загрузить погоду</p>';
+        }
+    } catch (error) {
+        document.getElementById('weatherWidget').innerHTML = '<p>⚠️ Ошибка подключения к серверу погоды</p>';
+        console.error('Weather error:', error);
+    }
+}
+
+// Загружаем погоду при загрузке страницы
+document.addEventListener('DOMContentLoaded', loadWeather);
+</script>
+
+<!-- Модальное окно для фото -->
+<div class="modal" id="imageModal">
+    <img id="modalImage" src="" alt="Увеличенное фото">
+</div>
+
+
+
+
+
+
+<!-- Кнопка наверх -->
+<div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="main.js"></script>
+
+
+<!-- ПОДВАЛ САЙТА (ФУТЕР) -->
+<footer style="background: #1a3a1a; color: #e8e8e8; padding: 40px 20px 25px; margin-top: 60px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Верхняя часть футера с иконками соцсетей -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h4 style="color: #FFD700; margin-bottom: 20px; font-size: 18px;">Присоединяйтесь к нам</h4>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/oao_novaya_pripyat" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: radial-gradient(circle at 30% 110%, #ffdb7e, #f46f30, #d62976, #962fbf, #4f5bd5); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-instagram" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Instagram</span>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/+375295119504" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #0088cc; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-telegram-plane" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Telegram</span>
+                </a>
+                
+                <!-- VK -->
+                <a href="https://vk.com/novaya_pripyat" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #4c75a3; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-vk" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">VK</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/375295119504" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #25D366; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-whatsapp" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">WhatsApp</span>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:novayapripyat@mail.ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #ea4335; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fas fa-envelope" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Email</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Разделительная линия -->
+        <div style="height: 1px; background: rgba(255,255,255,0.2); margin: 25px 0;"></div>
+        
+        <!-- Нижняя часть футера с текстом -->
+        <div style="text-align: center;">
+            <div style="font-size: 14px; line-height: 1.6;">
+                ОАО «Новая Припять» © 2025 — современное сельское хозяйство с заботой о людях
+            </div>
+            <div style="font-size: 13px; color: #aaa; margin-top: 10px;">
+                📍 Столинский район, аг. Ольшаны — гордость белорусского села
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 20px;">
+                <i class="fas fa-phone-alt"></i> +375 29 511 95 04 &nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> novayapripyat@mail.ru &nbsp;|&nbsp;
+                <i class="fas fa-map-marker-alt"></i> ул. Школьная, 4, аг. Ольшаны
+            </div>
+        </div>
+        
+    </div>
+</footer>
+</body>
+</html>

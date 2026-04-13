@@ -1,0 +1,46 @@
+<!-- КАРТА С 9 НАСЕЛЁННЫМИ ПУНКТАМИ 
+<div style="margin: 40px 0;">
+    <h3 style="color: #2b5b2c; text-align: center; margin-bottom: 20px;">📍 Карта хозяйства — 9 населённых пунктов</h3>
+    <div id="map" style="height: 500px; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);"></div>
+    <p style="text-align: center; font-size: 13px; color: #666; margin-top: 15px;">Кликайте по меткам — подробная информация о каждом пункте</p>
+</div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_ключ&lang=ru_RU" type="text/javascript"></script>
+<script>
+// Если нет API-ключа Яндекс.Карт — используйте OpenStreetMap (бесплатно без ключа)
+// Вот упрощённая версия через OpenStreetMap + Leaflet:
+
+const leafletCSS = document.createElement('link');
+leafletCSS.rel = 'stylesheet';
+leafletCSS.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+document.head.appendChild(leafletCSS);
+
+const leafletJS = document.createElement('script');
+leafletJS.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+leafletJS.onload = function() {
+    const map = L.map('map').setView([51.9833, 26.8333], 11);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+    }).addTo(map);
+    
+    const villages = [
+        { name: 'Ольшаны (центр)', coords: [51.9833, 26.8333], desc: 'Административный центр, ул. Школьная, 4' },
+        { name: 'Столин', coords: [51.8911, 26.8464], desc: 'Районный центр' },
+        { name: 'Давид-Городок', coords: [52.0564, 27.2167], desc: 'Ферма КРС' },
+        { name: 'Рубель', coords: [51.9611, 26.5389], desc: 'Растениеводство' },
+        { name: 'Велемичи', coords: [51.9167, 26.7167], desc: 'МТФ' },
+        { name: 'Оздамичи', coords: [51.9833, 26.6167], desc: 'Зерноток' },
+        { name: 'Глинка', coords: [51.9333, 26.8833], desc: 'Складская база' },
+        { name: 'Бережное', coords: [52.0167, 26.7833], desc: 'Машинный двор' },
+        { name: 'Мочуль', coords: [52.0333, 26.8667], desc: 'Луговодство' }
+    ];
+    
+    villages.forEach(v => {
+        const marker = L.marker(v.coords).addTo(map);
+        marker.bindPopup(`<b>${v.name}</b><br>${v.desc}`);
+    });
+};
+document.head.appendChild(leafletJS);
+</script>
+-->
+<p>В разработке</p>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продукция — ОАО "Новая Припять"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-detail {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .product-detail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .product-detail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-detail-content {
+            padding: 24px;
+        }
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+        .contact-order {
+            background: linear-gradient(135deg, #2b5b2c 0%, #1e3a1f 100%);
+            color: white;
+            border-radius: 32px;
+            padding: 48px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .contact-order a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+    <img src="images/logo.png" alt="ОАО Новая Припять" style="height: 50px; width: auto;">
+    <div>
+        <h1 style="font-size: 1.3rem;">Новая Припять</h1>
+        <p style="font-size: 0.65rem;">ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</p>
+    </div>
+</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="products.html">Продукция</a></li>
+                <li><a href="career.html">Карьера</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">FAQ</a><li>
+            </ul>
+            <a href="career.html" class="btn-primary">Хочу работать здесь</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+
+<section class="hero" style="background: url('images/products.jpg'); background-size: cover; background-position: center 50%;">
+    <div class="hero-bg-animation"></div>
+    <div class="container">
+        <div class="hero-content fade-up">
+            <h1>Наша продукция</h1>
+            <p>Качество, выращенное на полях Столинского района</p>
+            <a href="career.html" class="btn-outline" style="border-color:white; color:white;">Присоединяйтесь к команде</a>
+        </div>
+    </div>
+</section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-up">Что мы производим</h2>
+            <p class="section-subtitle fade-up">Натуральные продукты высокого качества</p>
+
+            <!-- Каталог продукции -->
+            <div class="catalog-grid fade-up">
+                <div class="product-detail">
+                    <img src="images/milk.jpg" alt="Молоко">
+                    <div class="product-detail-content">
+                        <h3>🥛 Молоко КРС</h3>
+                        <p>Натуральное молоко высшего сорта. Удой от коровы — 9 200 кг. Реализуем оптом и в розницу.</p>
+                        <span class="badge">Популярный продукт</span>
+                    </div>
+                </div>
+
+                <div class="product-detail">
+                    <img src="images/meat.jpg" alt="Говядина">
+                    <div class="product-detail-content">
+                        <h3>🥩 Говядина</h3>
+                        <p>Мраморное мясо от бычков на откорме. Среднесуточный привес — 850 грамм.</p>
+                        <span class="badge">Высокое качество</span>
+                    </div>
+                </div>
+
+                <div class="product-detail">
+                    <img src="images/grain.jpg" alt="Зерновые">
+                    <div class="product-detail-content">
+                        <h3>🌾 Зерновые культуры</h3>
+                        <p>Пшеница, ячмень, кукуруза, зернобобовые. Высокая урожайность и качество.</p>
+                    </div>
+                </div>
+
+                <div class="product-detail">
+                    <img src="images/sugarbeet.jpg" alt="Сахарная свекла">
+                    <div class="product-detail-content">
+                        <h3>🍬 Сахарная свекла</h3>
+                        <p>Высокая сахаристость, стабильные урожаи. Поставляем на перерабатывающие заводы.</p>
+                    </div>
+                </div>
+
+                <div class="product-detail">
+                    <img src="images/rapeseed.jpg" alt="Рапс и люцерна">
+                    <div class="product-detail-content">
+                        <h3>🌿 Рапс и люцерна</h3>
+                        <p>Технические культуры для производства масел и высокобелковых кормов.</p>
+                    </div>
+                </div>
+
+                <div class="product-detail">
+                    <img src="images/fodder.jpg" alt="Корма">
+                    <div class="product-detail-content">
+                        <h3>🌽 Корма для животных</h3>
+                        <p>Собственные корма высокого качества для КРС. Гарантия здоровья поголовья.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Живые бычки на откорм -->
+            <div class="product-detail fade-up" style="margin-top: 20px;">
+                <div class="product-detail-content">
+                    <h3>🐂 Бычки на откорм</h3>
+                    <p>Реализуем молодняк КРС для дальнейшего откорма. Здоровые животные, хороший привес.</p>
+                </div>
+            </div>
+
+            <!-- Блок для оптовиков -->
+            <div class="contact-order fade-up">
+                <i class="fas fa-truck" style="font-size: 3rem; margin-bottom: 16px;"></i>
+                <h3>Оптовые поставки</h3>
+                <p>Готовы к долгосрочному сотрудничеству. По вопросам оптовых закупок обращайтесь по телефону:</p>
+                <p style="font-size: 1.4rem; font-weight: bold; margin: 16px 0;">+375 29 511 95 04</p>
+                <a href="contacts.html" class="btn-outline" style="border-color: white; color: white;">Связаться с отделом сбыта →</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ПОДВАЛ САЙТА (ФУТЕР) -->
+<footer style="background: #1a3a1a; color: #e8e8e8; padding: 40px 20px 25px; margin-top: 60px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Верхняя часть футера с иконками соцсетей -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h4 style="color: #FFD700; margin-bottom: 20px; font-size: 18px;">Присоединяйтесь к нам</h4>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/oao_novaya_pripyat/?hl=ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: radial-gradient(circle at 30% 110%, #ffdb7e, #f46f30, #d62976, #962fbf, #4f5bd5); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-instagram" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Instagram</span>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/fgjluer" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #0088cc; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-telegram-plane" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Telegram</span>
+                </a>
+                
+                <!-- VK -->
+                <a href="https://vk.com/novaya_pripyat" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #4c75a3; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-vk" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">VK</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/375295119504" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #25D366; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-whatsapp" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">WhatsApp</span>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:novayapripyat@mail.ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #ea4335; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fas fa-envelope" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Email</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Разделительная линия -->
+        <div style="height: 1px; background: rgba(255,255,255,0.2); margin: 25px 0;"></div>
+        
+        <!-- Нижняя часть футера с текстом -->
+        <div style="text-align: center;">
+            <div style="font-size: 14px; line-height: 1.6;">
+                ОАО «Новая Припять» © 2025 — современное сельское хозяйство с заботой о людях
+            </div>
+            <div style="font-size: 13px; color: #aaa; margin-top: 10px;">
+                📍 Столинский район, аг. Ольшаны — гордость белорусского села
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 20px;">
+                <i class="fas fa-phone-alt"></i> +375 29 511 95 04 &nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> novayapripyat@mail.ru &nbsp;|&nbsp;
+                <i class="fas fa-map-marker-alt"></i> ул. Школьная, 4, аг. Ольшаны
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карьера в ОАО "Новая Припять"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+    <img src="images/logo.png" alt="ОАО Новая Припять" style="height: 50px; width: auto;">
+    <div>
+        <h1 style="font-size: 1.3rem;">Новая Припять</h1>
+        <p style="font-size: 0.65rem;">ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</p>
+    </div>
+</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="products.html">Продукция</a></li>
+                <li><a href="career.html">Карьера</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">FAQ</a><li>
+            </ul>
+            <a href="career.html" class="btn-primary">Хочу работать здесь</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title fade-up">С нашим хозяйством — в большое будущее</h1>
+            <p class="section-subtitle fade-up">Мы создаём условия, чтобы вы росли вместе с нами</p>
+
+            <!-- ТАБЛИЦА ВЫПЛАТ -->
+            <div class="table-wrapper fade-up">
+                <table class="bonus-table">
+                    <thead>
+                        <tr><th>Категория</th><th>Условия</th><th>Выплата</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Студент-целевик (зооветпрофиль)</td><td>Доплата к стипендии весь период обучения</td><td><strong>10 БВ</strong></td></tr>
+                        <tr><td>Студент-целевик (остальные)</td><td>Доплата к стипендии</td><td><strong>5 БВ</strong></td></tr>
+                        <tr><td>Молодой специалист</td><td>Первый контракт на 5 лет</td><td><strong>200 БВ</strong></td></tr>
+                        <tr><td>Молодой специалист</td><td>Второй контракт на 5 лет</td><td><strong>300 БВ</strong></td></tr>
+                        <tr><td>Вернувшемуся из армии</td><td>На прежнее место работы</td><td><strong>100 БВ</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ФОТО ОБЩЕЖИТИЯ И СПОРТЗАЛА -->
+            <div class="career-grid fade-up">
+                <div class="career-card">
+                    <img src="images/dorm.png" alt="Общежитие">
+                    <div class="career-card-content">
+                        <div class="badge">Комфортабельное общежитие</div>
+                        <h3>Для иногородних</h3>
+                        <p>Современные комнаты, кухня, душ. После 5 лет — арендный частный дом.</p>
+                    </div>
+                </div>
+                <div class="career-card">
+                    <img src="images/sport.jpg" alt="Спортзал">
+                    <div class="career-card-content">
+                        <div class="badge">Лучшие и в поле, и в зале</div>
+                        <h3>Спорт и досуг</h3>
+                        <p>Волейбол, футбол, турниры. Поддерживаем активный образ жизни.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КАЛЬКУЛЯТОР ВЫПЛАТ -->
+<div class="calculator-card" style="background: #f5f5f0; border-radius: 30px; padding: 30px; margin: 40px 0; text-align: center;">
+    <h3 style="color: #2b5b2c; margin-bottom: 10px;">💰 Калькулятор выплат</h3>
+    <p style="margin-bottom: 25px;">Выберите вашу категорию — рассчитаем поддержку от хозяйства</p>
+    
+    <select id="calcCategory" style="padding: 12px 20px; border-radius: 50px; border: 1px solid #ddd; width: 100%; max-width: 300px; margin-bottom: 25px; font-size: 16px;">
+        <option value="0">-- Выберите категорию --</option>
+        <option value="student_agro">Студент-целевик (зоовет/агроном)</option>
+        <option value="student_other">Студент-целевик (другие специальности)</option>
+        <option value="specialist_first">Молодой специалист (1-й контракт, 5 лет)</option>
+        <option value="specialist_second">Молодой специалист (2-й контракт, 5 лет)</option>
+        <option value="army">Вернувшийся из армии на прежнее место</option>
+    </select>
+    
+    <div id="calcResult" style="background: white; border-radius: 20px; padding: 20px; max-width: 400px; margin: 0 auto; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+        <p style="color: #999;">Выберите категорию для расчёта</p>
+    </div>
+</div>
+
+<script>
+const calcData = {
+    student_agro: { bonus: '10 БВ (~450 BYN)', housing: 'Общежитие на время учёбы', extra: '➕ Ежемесячная доплата к стипендии' },
+    student_other: { bonus: '5 БВ (~220 BYN)', housing: 'Общежитие на время учёбы', extra: '➕ Ежемесячная доплата к стипендии' },
+    specialist_first: { bonus: '200 БВ (~9000 BYN)', housing: 'Комфортабельное общежитие', extra: '➕ Подъёмные при заключении контракта' },
+    specialist_second: { bonus: '300 БВ (~13500 BYN)', housing: 'Арендный частный дом', extra: '➕ Повышенные подъёмные' },
+    army: { bonus: '100 БВ (~4500 BYN)', housing: 'Сохранение жилья', extra: '➕ Единовременная выплата' }
+};
+
+document.getElementById('calcCategory').addEventListener('change', function() {
+    const val = this.value;
+    if (val === '0') {
+        document.getElementById('calcResult').innerHTML = '<p style="color: #999;">Выберите категорию для расчёта</p>';
+        return;
+    }
+    const data = calcData[val];
+    document.getElementById('calcResult').innerHTML = `
+        <div style="font-size: 28px; font-weight: bold; color: #2b5b2c;">${data.bonus}</div>
+        <div style="margin: 10px 0;"><strong>🏠 Жильё:</strong> ${data.housing}</div>
+        <div>${data.extra}</div>
+        <div style="margin-top: 15px; font-size: 12px; color: #666;">* БВ = базовая величина (на сегодня ~45 BYN)</div>
+    `;
+});
+</script>
+
+            <!-- ОТЗЫВ -->
+            <div class="fade-up" style="background: #f9fafb; border-radius: 24px; padding: 32px; margin-top: 32px; border-left: 6px solid #2b5b2c;">
+                <p style="font-style: italic;">«Достаточно хорошая площадка для учащихся сельскохозяйственных учебных заведений. Здесь можно пройти практику на высоком уровне и оценить комфортные условия труда».</p>
+                <p style="margin-top: 12px; font-weight: 600;">— Абитуриент ОАО «Новая Припять»</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<!-- ПОДВАЛ САЙТА (ФУТЕР) -->
+<footer style="background: #1a3a1a; color: #e8e8e8; padding: 40px 20px 25px; margin-top: 60px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Верхняя часть футера с иконками соцсетей -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h4 style="color: #FFD700; margin-bottom: 20px; font-size: 18px;">Присоединяйтесь к нам</h4>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/oao_novaya_pripyat/?hl=ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: radial-gradient(circle at 30% 110%, #ffdb7e, #f46f30, #d62976, #962fbf, #4f5bd5); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-instagram" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Instagram</span>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/fgjluer" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #0088cc; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-telegram-plane" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Telegram</span>
+                </a>
+                
+                <!-- VK -->
+                <a href="https://vk.com/novaya_pripyat" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #4c75a3; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-vk" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">VK</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/375295119504" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #25D366; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-whatsapp" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">WhatsApp</span>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:novayapripyat@mail.ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #ea4335; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fas fa-envelope" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Email</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Разделительная линия -->
+        <div style="height: 1px; background: rgba(255,255,255,0.2); margin: 25px 0;"></div>
+        
+        <!-- Нижняя часть футера с текстом -->
+        <div style="text-align: center;">
+            <div style="font-size: 14px; line-height: 1.6;">
+                ОАО «Новая Припять» © 2025 — современное сельское хозяйство с заботой о людях
+            </div>
+            <div style="font-size: 13px; color: #aaa; margin-top: 10px;">
+                📍 Столинский район, аг. Ольшаны — гордость белорусского села
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 20px;">
+                <i class="fas fa-phone-alt"></i> +375 29 511 95 04 &nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> novayapripyat@mail.ru &nbsp;|&nbsp;
+                <i class="fas fa-map-marker-alt"></i> ул. Школьная, 4, аг. Ольшаны
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
