@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь — ОАО "Новая Припять"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feedback-page {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .feedback-card {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .feedback-card h1 {
+            color: #2b5b2c;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .feedback-card p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .anon-badge {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .anon-badge span {
+            background: #f0fdf4;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: #2b5b2c;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #2b5b2c;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .submit-btn:hover {
+            background: #1a4d1a;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+        .status.success {
+            display: block;
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .telegram-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .telegram-link a {
+            color: #0088cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header style="background: #1a3a1a; padding: 15px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            <img src="images/logo.png" alt="Логотип" style="height: 45px;">
+            <div>
+                <div style="color: #FFD700; font-size: 11px;">ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</div>
+                <div style="color: white; font-weight: 700;">Новая Припять</div>
+            </div>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="index.html" style="color: white;">Главная</a>
+            <a href="about.html" style="color: white;">О нас</a>
+            <a href="contacts.html" style="color: white;">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+<div class="feedback-page">
+    <div class="feedback-card">
+        <div class="anon-badge">
+            <span>🔒 Анонимно</span>
+        </div>
+        <h1>💬 Обратная связь</h1>
+        <p>Ваше мнение важно для нас</p>
+        
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label>Тип обращения</label>
+                <select id="type" required>
+                    <option value="feedback">💬 Отзыв</option>
+                    <option value="question">❓ Вопрос</option>
+                    <option value="complaint">⚠️ Жалоба</option>
+                    <option value="idea">💡 Предложение</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Ваше сообщение</label>
+                <textarea id="message" placeholder="Напишите здесь..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Контакт для ответа (необязательно)</label>
+                <input type="text" id="contact" placeholder="Telegram / WhatsApp / Email">
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Отправить анонимно
+            </button>
+            
+            <div id="status" class="status"></div>
+        </form>
+        
+        <div class="telegram-link">
+            <i class="fab fa-telegram"></i> Или напишите нам в 
+            <a href="https://t.me/NovayaPripyatFeedbackBot" target="_blank">Telegram</a>
+        </div>
+    </div>
+</div>
+
+<!-- ПОДВАЛ -->
+<footer style="background: #1a3a1a; color: white; padding: 30px; text-align: center; margin-top: 60px;">
+    <p>ОАО «Новая Припять» © 2026</p>
+</footer>
+
+<script>
+// ⚠️ ВСТАВЬТЕ ВАШ ТОКЕН ОТ БОТА (созданного через @BotFather)
+const BOT_TOKEN = '7898484739:AAEcX-Ryg5Rs76NortgKZ3bM8-wg_A5ebCQ';
+const CHAT_ID = '849172302';
+
+document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const type = document.getElementById('type').value;
+    const message = document.getElementById('message').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const statusDiv = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    if (!message) {
+        statusDiv.className = 'status error';
+        statusDiv.innerHTML = '❌ Пожалуйста, напишите сообщение';
+        return;
+    }
+    
+    const typeNames = {
+        feedback: '💬 Отзыв',
+        question: '❓ Вопрос',
+        complaint: '⚠️ Жалоба',
+        idea: '💡 Предложение'
+    };
+    
+    let text = `📨 <b>НОВОЕ ОБРАЩЕНИЕ</b>\n`;
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `${typeNames[type]}\n`;
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `📝 <b>Сообщение:</b>\n${message}\n`;
+    if (contact) {
+        text += `━━━━━━━━━━━━━━━━\n`;
+        text += `📞 <b>Контакт:</b> ${contact}\n`;
+    }
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `🕐 ${new Date().toLocaleString('ru-RU')}\n`;
+    text += `🔒 <i>Анонимно</i>`;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Отправка...';
+    
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const params = new URLSearchParams();
+    params.append('chat_id', CHAT_ID);
+    params.append('text', text);
+    params.append('parse_mode', 'HTML');
+    
+    try {
+        const response = await fetch(url, { method: 'POST', body: params });
+        const data = await response.json();
+        
+        if (data.ok) {
+            statusDiv.className = 'status success';
+            statusDiv.innerHTML = '✅ Спасибо! Ваше сообщение отправлено.';
+            document.getElementById('message').value = '';
+            document.getElementById('contact').value = '';
+        } else {
+            statusDiv.className = 'status error';
+            statusDiv.innerHTML = '❌ Ошибка отправки. Попробуйте позже.';
+        }
+    } catch (error) {
+        statusDiv.className = 'status error';
+        statusDiv.innerHTML = '❌ Ошибка соединения.';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить анонимно';
+    }
+});
+</script>
+</body>
+</html>
