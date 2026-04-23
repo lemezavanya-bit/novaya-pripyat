@@ -109,21 +109,27 @@
 </head>
 <body>
 
-<!-- ШАПКА -->
-<header style="background: #1a3a1a; padding: 15px 20px;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-        <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-            <img src="images/logo.png" alt="Логотип" style="height: 45px;">
-            <div>
-                <div style="color: #FFD700; font-size: 11px;">ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</div>
-                <div style="color: white; font-weight: 700;">Новая Припять</div>
-            </div>
-        </a>
-        <nav style="display: flex; gap: 20px;">
-            <a href="index.html" style="color: white;">Главная</a>
-            <a href="about.html" style="color: white;">О нас</a>
-            <a href="contacts.html" style="color: white;">Контакты</a>
-        </nav>
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+    <img src="images/logo.png" alt="ОАО Новая Припять" style="height: 50px; width: auto;">
+    <div>
+        <h1 style="font-size: 1.3rem;">Новая Припять</h1>
+        <p style="font-size: 0.65rem;">ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО</p>
+    </div>
+</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="products.html">Продукция</a></li>
+                <li><a href="career.html">Карьера</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">FAQ</a><li>
+            </ul>
+            <a href="career.html" class="btn-primary">Хочу работать здесь</a>
+        </div>
     </div>
 </header>
 
@@ -171,15 +177,11 @@
     </div>
 </div>
 
-<!-- ПОДВАЛ -->
-<footer style="background: #1a3a1a; color: white; padding: 30px; text-align: center; margin-top: 60px;">
-    <p>ОАО «Новая Припять» © 2026</p>
-</footer>
 
 <script>
 // ⚠️ ВСТАВЬТЕ ВАШ ТОКЕН ОТ БОТА (созданного через @BotFather)
 const BOT_TOKEN = '7898484739:AAEcX-Ryg5Rs76NortgKZ3bM8-wg_A5ebCQ';
-const CHAT_ID = '849172302';
+const CHAT_ID = '-5292510094';
 
 document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -247,5 +249,70 @@ document.getElementById('feedbackForm').addEventListener('submit', async (e) => 
     }
 });
 </script>
+</body>
+
+<!-- ПОДВАЛ САЙТА (ФУТЕР) -->
+<footer style="background: #1a3a1a; color: #e8e8e8; padding: 40px 20px 25px; margin-top: 60px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Верхняя часть футера с иконками соцсетей -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h4 style="color: #FFD700; margin-bottom: 20px; font-size: 18px;">Присоединяйтесь к нам</h4>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/oao_novaya_pripyat" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: radial-gradient(circle at 30% 110%, #ffdb7e, #f46f30, #d62976, #962fbf, #4f5bd5); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-instagram" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Instagram</span>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/+375295119504" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #0088cc; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fab fa-telegram-plane" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Telegram</span>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:novayapripyat@mail.ru" target="_blank" style="text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="background: #ea4335; width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                        <i class="fas fa-envelope" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <span style="font-size: 12px; color: #ccc;">Email</span>
+                </a>
+            </div>
+        </div>
+
+
+<!-- Или в подвал -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="feedback.html" style="color: #FFD700;">📝 Оставить отзыв</a>
+    <span style="color: white; margin: 0 15px;">|</span>
+    <a href="https://t.me/NovayaPripyatFeedbackBot" target="_blank" style="color: #FFD700;">💬 Написать в Telegram</a>
+</div>
+        
+        <!-- Разделительная линия -->
+        <div style="height: 1px; background: rgba(255,255,255,0.2); margin: 25px 0;"></div>
+        
+        <!-- Нижняя часть футера с текстом -->
+        <div style="text-align: center;">
+            <div style="font-size: 14px; line-height: 1.6;">
+                ОАО «Новая Припять» © 2026 — современное сельское хозяйство с заботой о людях
+            </div>
+            <div style="font-size: 13px; color: #aaa; margin-top: 10px;">
+                📍 Столинский район, аг. Ольшаны — гордость белорусского села
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 20px;">
+                <i class="fas fa-phone-alt"></i> +375 29 511 95 04 &nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> novayapripyat@mail.ru &nbsp;|&nbsp;
+                <i class="fas fa-map-marker-alt"></i> ул. Школьная, 4, аг. Ольшаны
+            </div>
+        </div>
+        
+    </div>
+</footer>
 </body>
 </html>
