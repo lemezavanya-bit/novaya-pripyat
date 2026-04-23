@@ -53,49 +53,124 @@
                 <p style="font-size: 0.9rem; color: #4b5563;">Обед: 12:00 – 13:00 | Выходной: Сб, Вс</p>
             </div>
 
-<!--Форма обратной связи-->
-            <div class="fade-up" style="background: white; border-radius: 32px; padding: 40px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); margin-bottom: 40px;">
-    <h3 style="font-size: 1.5rem; color: #2b5b2c; margin-bottom: 8px; text-align: center;">Напишите нам</h3>
-    <p style="text-align: center; margin-bottom: 32px; color: #4b5563;">Задайте вопрос или оставьте заявку</p>
-    
-    <form id="feedbackForm" method="POST" action="send.php">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <input type="text" name="name" placeholder="Ваше имя" required style="padding: 14px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 1rem;">
-            <input type="tel" name="phone" placeholder="Ваш телефон" required style="padding: 14px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 1rem;">
+<!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+<div class="feedback-page">
+    <div class="feedback-card">
+        <div class="anon-badge">
+            <span>🔒 Анонимно</span>
         </div>
-        <textarea name="message" placeholder="Ваше сообщение" rows="4" required style="width: 100%; margin-top: 20px; padding: 14px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 1rem;"></textarea>
-        <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%; cursor: pointer;">Отправить сообщение</button>
-    </form>
-    <div id="formMessage" style="margin-top: 16px; text-align: center; font-weight: 500;"></div>
+        <h1>💬 Обратная связь</h1>
+        <p>Ваше мнение важно для нас</p>
+        
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label>Тип обращения</label>
+                <select id="type" required>
+                    <option value="feedback">💬 Отзыв</option>
+                    <option value="question">❓ Вопрос</option>
+                    <option value="complaint">⚠️ Жалоба</option>
+                    <option value="idea">💡 Предложение</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Ваше сообщение</label>
+                <textarea id="message" placeholder="Напишите здесь..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Контакт для ответа (необязательно)</label>
+                <input type="text" id="contact" placeholder="Telegram / WhatsApp / Email">
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Отправить анонимно
+            </button>
+            
+            <div id="status" class="status"></div>
+        </form>
+        
+        <div class="telegram-link">
+            <i class="fab fa-telegram"></i> Или напишите нам в 
+            <a href="https://t.me/NovayaPripyatFeedbackBot" target="_blank">Telegram</a>
+        </div>
+    </div>
 </div>
 
+
 <script>
-    document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const messageDiv = document.getElementById('formMessage');
+// ⚠️ ВСТАВЬТЕ ВАШ ТОКЕН ОТ БОТА (созданного через @BotFather)
+const BOT_TOKEN = '7898484739:AAEcX-Ryg5Rs76NortgKZ3bM8-wg_A5ebCQ';
+const CHAT_ID = '-5292510094';
+
+document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const type = document.getElementById('type').value;
+    const message = document.getElementById('message').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const statusDiv = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    if (!message) {
+        statusDiv.className = 'status error';
+        statusDiv.innerHTML = '❌ Пожалуйста, напишите сообщение';
+        return;
+    }
+    
+    const typeNames = {
+        feedback: '💬 Отзыв',
+        question: '❓ Вопрос',
+        complaint: '⚠️ Жалоба',
+        idea: '💡 Предложение'
+    };
+    
+    let text = `📨 <b>НОВОЕ ОБРАЩЕНИЕ</b>\n`;
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `${typeNames[type]}\n`;
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `📝 <b>Сообщение:</b>\n${message}\n`;
+    if (contact) {
+        text += `━━━━━━━━━━━━━━━━\n`;
+        text += `📞 <b>Контакт:</b> ${contact}\n`;
+    }
+    text += `━━━━━━━━━━━━━━━━\n`;
+    text += `🕐 ${new Date().toLocaleString('ru-RU')}\n`;
+    text += `🔒 <i>Анонимно</i>`;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Отправка...';
+    
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const params = new URLSearchParams();
+    params.append('chat_id', CHAT_ID);
+    params.append('text', text);
+    params.append('parse_mode', 'HTML');
+    
+    try {
+        const response = await fetch(url, { method: 'POST', body: params });
+        const data = await response.json();
         
-        messageDiv.innerHTML = 'Отправка...';
-        messageDiv.style.color = '#2b5b2c';
-        
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData
-            });
-            const result = await response.text();
-            if (result.includes('success')) {
-                messageDiv.innerHTML = '✅ Сообщение отправлено! Мы свяжемся с вами.';
-                form.reset();
-            } else {
-                messageDiv.innerHTML = '❌ Ошибка. Пожалуйста, позвоните нам.';
-            }
-        } catch (error) {
-            messageDiv.innerHTML = '❌ Ошибка отправки. Пожалуйста, позвоните по телефону.';
+        if (data.ok) {
+            statusDiv.className = 'status success';
+            statusDiv.innerHTML = '✅ Спасибо! Ваше сообщение отправлено.';
+            document.getElementById('message').value = '';
+            document.getElementById('contact').value = '';
+        } else {
+            statusDiv.className = 'status error';
+            statusDiv.innerHTML = '❌ Ошибка отправки. Попробуйте позже.';
         }
-    });
+    } catch (error) {
+        statusDiv.className = 'status error';
+        statusDiv.innerHTML = '❌ Ошибка соединения.';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить анонимно';
+    }
+});
 </script>
+
+</body>
 
 <!-- СОЦСЕТИ -->
 <div style="text-align: center; margin: 50px 0; padding: 30px; background: linear-gradient(135deg, #f5f5f0, #fff); border-radius: 40px;">
@@ -173,7 +248,7 @@
         <!-- Нижняя часть футера с текстом -->
         <div style="text-align: center;">
             <div style="font-size: 14px; line-height: 1.6;">
-                ОАО «Новая Припять» © 2025 — современное сельское хозяйство с заботой о людях
+                ОАО «Новая Припять» © 2026 — современное сельское хозяйство с заботой о людях
             </div>
             <div style="font-size: 13px; color: #aaa; margin-top: 10px;">
                 📍 Столинский район, аг. Ольшаны — гордость белорусского села
